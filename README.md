@@ -12,7 +12,7 @@ This is still heavily under development and is not intended for end-user use. Th
 
 # Requirements
 
-- A desktop platform which can compile .NET 4.5.
+- A desktop platform which can compile .NET 4.8.
 - Visual Studio or MonoDevelop is recommended.
 
 # Contributing
