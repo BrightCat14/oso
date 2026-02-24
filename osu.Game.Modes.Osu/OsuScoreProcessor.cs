@@ -3,10 +3,12 @@
 
 using osu.Game.Modes.Objects.Drawables;
 using osu.Game.Modes.Osu.Objects.Drawables;
+using System;
+using System.Collections.Generic;
 
 namespace osu.Game.Modes.Osu
 {
-    class OsuScoreProcessor : ScoreProcessor
+    class OsuScoreProcessor : ScoreProcessor, IHasDisplayJudgements
     {
         public OsuScoreProcessor(int hitObjectCount)
             : base(hitObjectCount)
@@ -14,6 +16,7 @@ namespace osu.Game.Modes.Osu
             Health.Value = 1;
         }
 
+        public List<DisplayJudgement> DisplayJudgements { get; } = new List<DisplayJudgement>();
         protected override void UpdateCalculations(JudgementInfo judgement)
         {
             if (judgement != null)
@@ -36,6 +39,21 @@ namespace osu.Game.Modes.Osu
 
             foreach (OsuJudgementInfo j in Judgements)
             {
+                DisplayScore ds;
+
+                double hitOffset = Math.Abs(judgement.TimeOffset);
+                if (j.Score == OsuScoreResult.Hit300) ds = DisplayScore.Hit300;
+                else if (j.Score == OsuScoreResult.Hit100) ds = DisplayScore.Hit100;
+                else if (j.Score == OsuScoreResult.Hit50) ds = DisplayScore.Hit50;
+                else ds = DisplayScore.Miss;
+
+                DisplayJudgements.Add(new DisplayJudgement
+                {
+                    Score = ds,
+                    ComboAtHit = judgement.ComboAtHit,
+                    TimeOffset = judgement.TimeOffset
+                });
+
                 switch (j.Score)
                 {
                     case OsuScoreResult.Miss:

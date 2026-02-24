@@ -17,16 +17,16 @@ namespace osu.Game.Overlays.Options.Sections.Online
         {
             Children = new Drawable[]
             {
-                new OsuCheckbox
-                {
-                    LabelText = "Integrate with Yahoo! status display",
-                    Bindable = config.GetBindable<bool>(OsuConfig.YahooIntegration)
-                },
-                new OsuCheckbox
-                {
-                    LabelText = "Integrate with MSN Live status display",
-                    Bindable = config.GetBindable<bool>(OsuConfig.MsnIntegration)
-                },
+                //new OsuCheckbox
+                //{
+                //    LabelText = "Integrate with Yahoo! status display",
+                //    Bindable = config.GetBindable<bool>(OsuConfig.YahooIntegration)
+                //},
+                //new OsuCheckbox
+                //{
+                //    LabelText = "Integrate with MSN Live status display",
+                //    Bindable = config.GetBindable<bool>(OsuConfig.MsnIntegration)
+                //}, not relevant 
                 new OsuCheckbox
                 {
                     LabelText = "Automatically start osu!direct downloads",

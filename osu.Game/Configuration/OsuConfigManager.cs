@@ -69,7 +69,7 @@ namespace osu.Game.Configuration
             Set(OsuConfig.IgnoreBeatmapSkins, false);
             Set(OsuConfig.IgnoreList, string.Empty);
             Set(OsuConfig.KeyOverlay, false);
-            Set(OsuConfig.Language, @"unknown");
+            Set(OsuConfig.Language, @"English");
             Set(OsuConfig.AllowNowPlayingHighlights, false);
             Set(OsuConfig.LastVersion, string.Empty);
             Set(OsuConfig.LastVersionPermissionsFailed, string.Empty);
@@ -146,7 +146,7 @@ namespace osu.Game.Configuration
             Set(OsuConfig.DisplayStarsMaximum, 10.0, 0.0, 10.0);
             Set(OsuConfig.DisplayStarsMinimum, 0.0, 0.0, 10.0);
             Set(OsuConfig.AudioDevice, string.Empty);
-            Set(OsuConfig.ReleaseStream, ReleaseStream.Lazer);
+            Set(OsuConfig.ReleaseStream, ReleaseStream.No_Updates);
             Set(OsuConfig.UpdateFailCount, 0);
             Set(OsuConfig.SavePassword, false);
             Set(OsuConfig.SaveUsername, true);

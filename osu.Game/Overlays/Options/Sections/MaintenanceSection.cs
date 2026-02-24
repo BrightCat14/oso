@@ -1,15 +1,17 @@
 ﻿// Copyright (c) 2007-2017 ppy Pty Ltd <contact@ppy.sh>.
 // Licensed under the MIT Licence - https://raw.githubusercontent.com/ppy/osu/master/LICENCE
 
+using OpenTK;
 using osu.Framework.Graphics;
 using osu.Game.Graphics;
 using osu.Game.Graphics.UserInterface;
-using OpenTK;
+using System.Reflection;
 
 namespace osu.Game.Overlays.Options.Sections
 {
     public class MaintenanceSection : OptionsSection
     {
+        private string Version => Assembly.GetEntryAssembly().GetName().Version.ToString();
         public override string Header => "Maintenance";
         public override FontAwesome Icon => FontAwesome.fa_wrench;
 
@@ -33,14 +35,14 @@ namespace osu.Game.Overlays.Options.Sections
                     RelativeSizeAxes = Axes.X,
                     Text = "Mark all maps as played",
                 },
-                new OsuButton
-                {
-                    RelativeSizeAxes = Axes.X,
-                    Text = "Run osu! updater",
-                },
+                //new OsuButton
+                //{
+                //    RelativeSizeAxes = Axes.X,
+                //    Text = "Run osu! updater",
+                //},
                 new OptionLabel
                 {
-                    Text = "TODO: osu version here",
+                    Text = $@"oso! v{Version}",
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
                 },

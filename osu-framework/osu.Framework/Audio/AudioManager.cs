@@ -309,6 +309,11 @@ namespace osu.Framework.Audio
         {
             if (AudioDevice.Value == string.Empty)
             {
+                if (Bass.DeviceCount <= 0 || Bass.CurrentDevice < 0)
+                {
+                    updateAvailableAudioDevices();
+                    return;
+                }
                 // use default device
                 var device = Bass.GetDeviceInfo(Bass.CurrentDevice);
                 if (!device.IsDefault && !setAudioDevice())

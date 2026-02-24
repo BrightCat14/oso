@@ -17,7 +17,11 @@ namespace osu.Game.Overlays.Options.Sections.General
         {
             Children = new Drawable[]
             {
-                new OptionLabel { Text = "TODO: Dropdown" },
+                new OptionEnumDropDown<Language>
+                {
+                    LabelText = "Language",
+                    Bindable = config.GetBindable<Language>(OsuConfig.Language),
+                },
                 new OsuCheckbox
                 {
                     LabelText = "Prefer metadata in original language",

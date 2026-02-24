@@ -23,14 +23,16 @@ namespace osu.Desktop.Overlays
             Anchor = Anchor.BottomCentre;
             Origin = Anchor.BottomCentre;
 
-            var asm = Assembly.GetEntryAssembly().GetName();
-            Add(new OsuSpriteText
-            {
-                Text = $@"osu!lazer v{asm.Version}"
-            });
+            // already showing in maintenance section, so not needed here.
+            //Add(new OsuSpriteText
+            //
+            //  Text = $@"oso! v{Version}"
+            //});
 
             updateChecker();
         }
+
+        private string Version => Assembly.GetEntryAssembly().GetName().Version.ToString();
 
         protected override void LoadComplete()
         {
@@ -54,20 +56,20 @@ namespace osu.Desktop.Overlays
             var info = await updateManager.CheckForUpdate();
             if (info.ReleasesToApply.Count > 0)
             {
-                ProgressNotification n = new UpdateProgressNotification
-                {
-                    Text = @"Downloading update..."
-                };
-                Schedule(() => notification.Post(n));
-                Schedule(() => n.State = ProgressNotificationState.Active);
-                await updateManager.DownloadReleases(info.ReleasesToApply, (int p) => Schedule(() => n.Progress = p / 100f));
-                Schedule(() => n.Text = @"Installing update...");
-                await updateManager.ApplyReleases(info, (int p) => Schedule(() => n.Progress = p / 100f));
-                Schedule(() => n.State = ProgressNotificationState.Completed);
+                //ProgressNotification n = new UpdateProgressNotification
+                //{
+                //    Text = @"Downloading update..."
+                //};
+                //Schedule(() => notification.Post(n));
+                //Schedule(() => n.State = ProgressNotificationState.Active);
+                //await updateManager.DownloadReleases(info.ReleasesToApply, (int p) => Schedule(() => n.Progress = p / 100f));
+                //Schedule(() => n.Text = @"Installing update...");
+                //await updateManager.ApplyReleases(info, (int p) => Schedule(() => n.Progress = p / 100f));
+                //Schedule(() => n.State = ProgressNotificationState.Completed);
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 //check again every 30 minutes.
                 Scheduler.AddDelayed(updateChecker, 60000 * 30);
             }

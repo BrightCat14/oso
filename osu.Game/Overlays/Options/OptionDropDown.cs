@@ -30,14 +30,24 @@ namespace osu.Game.Overlays.Options
 
         public Bindable<T> Bindable
         {
-            get { return bindable; }
+            get => bindable;
             set
             {
                 if (bindable != null)
                     bindable.ValueChanged -= Bindable_ValueChanged;
+
+                if (dropdown != null)
+                    dropdown.ValueChanged -= Dropdown_ValueChanged;
+
                 bindable = value;
-                bindable.ValueChanged += Bindable_ValueChanged;
-                Bindable_ValueChanged(null, null);
+
+                if (bindable != null)
+                {
+                    bindable.ValueChanged += Bindable_ValueChanged;
+                    if (dropdown != null)
+                        dropdown.ValueChanged += Dropdown_ValueChanged;
+                    Bindable_ValueChanged(null, null);
+                }
             }
         }
 
@@ -45,6 +55,7 @@ namespace osu.Game.Overlays.Options
 
         void Bindable_ValueChanged(object sender, EventArgs e)
         {
+            if (bindable == null) return;
             dropdown.SelectedValue = bindable.Value;
         }
 
@@ -55,8 +66,10 @@ namespace osu.Game.Overlays.Options
 
         protected override void Dispose(bool isDisposing)
         {
-            bindable.ValueChanged -= Bindable_ValueChanged;
-            dropdown.ValueChanged -= Dropdown_ValueChanged;
+            if (bindable != null)
+                bindable.ValueChanged -= Bindable_ValueChanged;
+            if (dropdown != null)
+                dropdown.ValueChanged -= Dropdown_ValueChanged;
             base.Dispose(isDisposing);
         }
 

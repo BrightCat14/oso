@@ -2,11 +2,15 @@
 // Licensed under the MIT Licence - https://raw.githubusercontent.com/ppy/osu/master/LICENCE
 
 using System;
+using System.ComponentModel;
 namespace osu.Game.Configuration
 {
     public enum ReleaseStream
     {
-        Lazer,
+        [Description("No Updates")]
+        No_Updates,
+
+        Lazer
         //Stable40,
         //Beta40,
         //Stable

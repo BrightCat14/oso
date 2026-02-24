@@ -152,6 +152,6 @@ namespace osu.Game.Modes.Objects.Drawables
         [Description(@"Miss")]
         Miss,
         [Description(@"Hit")]
-        Hit,
+        Hit
     }
 }
